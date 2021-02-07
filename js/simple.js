@@ -1,36 +1,23 @@
 'use strict';
 
-if (4 == 9) { //1 = true
-    console.log('Ok!');
-} else {
-    console.log('Error');
+let num = 50;
+while (num <= 55) {
+    console.log(num);
+    num++;
 }
 
-// const num = 50;
-// if (num < 49) {
-//     console.log('Error');
-// } else if (num > 100) {
-//     console.log('Много');
-// } else {
-//     console.log('Ok!');
-// }
-
-// (num === 50) ? console.log('Ok!') : console.log("unOk!"); //Тернарный оператор ? вместо if, : вместо else
-//Зовется тернарным, тк принимает три аргумента, условие, действие для true, действие для false
-const num = 5230;
-
-switch (num) {
-    case 49:
-        console.log('Неверно');
-        break;
-    case 100:
-        console.log('Неверно');
-        break;
-    case 50:
-        console.log('Верно');
-        break;
-    default: //Выбирается, если ничего не подошло
-        console.log('Не в этот раз');
-        break;
+num = 50;
+do {
+    console.log(num);
+    num++;
 }
+while(num < 55);
 
+for (let i = 1; i <= 21; i++) {
+    if (i === 13) {
+        // break; //Сразу после break цикл полностью заканчивает работу
+        continue; //Сразу после continue цикл переходит на следующий шаг
+    }
+
+    console.log(i);
+}
