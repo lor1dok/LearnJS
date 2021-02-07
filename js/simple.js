@@ -1,25 +1,57 @@
-"use strict";
+/* Задание на урок:
 
-console.log('arr' + " - object");
-console.log(4 + +"6"); //+ перед числом зовется унарным
+1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
+'Сколько фильмов вы уже посмотрели?'
 
-let incr = 10,
-    decr = 10;
+2) Создать объект personalMovieDB и в него поместить такие свойства:
+    - count - сюда передается ответ на первый вопрос
+    - movies - в это свойство поместить пустой объект
+    - actors - тоже поместить пустой объект
+    - genres - сюда поместить пустой массив
+    - privat - в это свойство поместить boolean(логическое) значение false
 
-++incr; //Оператор инкремента префиксная
-decr--; //Декремента постфиксная
+3) Задайте пользователю по два раза вопросы:
+    - 'Один из последних просмотренных фильмов?'
+    - 'На сколько оцените его?'
+Ответы стоит поместить в отдельные переменные
+Записать ответы в объект movies в формате: 
+    movies: {
+        'logan': '8.1'
+    }
 
-console.log(incr + '  ' + decr);
+Проверить, чтобы все работало без ошибок в консоли */
 
-console.log(incr++ + '  ' + decr--); //Сначала выводит, а потом применяет оператор
-console.log(++incr + '  ' + --decr); //Сначала оператор, потом выводит
+'use strict';
 
-console.log(5%2);
+const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
 
-console.log(2*4 == '8'); //Сравниваем только по значению выходит true
-console.log(2*4 === '8'); //Сравниваем еще и по типу получаем false
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
-console.log(2 === 2 && 3 === 4);
-console.log(2 === 2 || 3 === 4);
+let lastSeenFilmOne = prompt("Какой последний фильм вы посмотрели?"),
+    lastSeenFilmRatingOne = +prompt("Какую оценку вы ему бы поставили?"),
+    lastSeenFilmTwo = prompt("Какой последний фильм вы посмотрели?"),
+    lastSeenFilmRatingTwo = +prompt("Какую оценку вы ему бы поставили?");
+
+// personalMovieDB.movies = {
+//     lastSeenFilmOne:lastSeenFilmRatingOne,
+//     lastSeenFilmTwo:lastSeenFilmRatingTwo
+// }; //Хрень вышла
+
+personalMovieDB.movies[lastSeenFilmOne] = lastSeenFilmRatingOne;
+personalMovieDB.movies[lastSeenFilmTwo] = lastSeenFilmRatingTwo; 
+//Вот так правильно, юзаем [] чтобы избежать проблем отображения кириллицы и др.
+
+console.log(personalMovieDB);
+
+
+
+
+
 
 
