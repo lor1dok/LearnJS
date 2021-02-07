@@ -1,57 +1,36 @@
-/* Задание на урок:
-
-1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-'Сколько фильмов вы уже посмотрели?'
-
-2) Создать объект personalMovieDB и в него поместить такие свойства:
-    - count - сюда передается ответ на первый вопрос
-    - movies - в это свойство поместить пустой объект
-    - actors - тоже поместить пустой объект
-    - genres - сюда поместить пустой массив
-    - privat - в это свойство поместить boolean(логическое) значение false
-
-3) Задайте пользователю по два раза вопросы:
-    - 'Один из последних просмотренных фильмов?'
-    - 'На сколько оцените его?'
-Ответы стоит поместить в отдельные переменные
-Записать ответы в объект movies в формате: 
-    movies: {
-        'logan': '8.1'
-    }
-
-Проверить, чтобы все работало без ошибок в консоли */
-
 'use strict';
 
-const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+if (4 == 9) { //1 = true
+    console.log('Ok!');
+} else {
+    console.log('Error');
+}
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
+// const num = 50;
+// if (num < 49) {
+//     console.log('Error');
+// } else if (num > 100) {
+//     console.log('Много');
+// } else {
+//     console.log('Ok!');
+// }
 
-let lastSeenFilmOne = prompt("Какой последний фильм вы посмотрели?"),
-    lastSeenFilmRatingOne = +prompt("Какую оценку вы ему бы поставили?"),
-    lastSeenFilmTwo = prompt("Какой последний фильм вы посмотрели?"),
-    lastSeenFilmRatingTwo = +prompt("Какую оценку вы ему бы поставили?");
+// (num === 50) ? console.log('Ok!') : console.log("unOk!"); //Тернарный оператор ? вместо if, : вместо else
+//Зовется тернарным, тк принимает три аргумента, условие, действие для true, действие для false
+const num = 5230;
 
-// personalMovieDB.movies = {
-//     lastSeenFilmOne:lastSeenFilmRatingOne,
-//     lastSeenFilmTwo:lastSeenFilmRatingTwo
-// }; //Хрень вышла
-
-personalMovieDB.movies[lastSeenFilmOne] = lastSeenFilmRatingOne;
-personalMovieDB.movies[lastSeenFilmTwo] = lastSeenFilmRatingTwo; 
-//Вот так правильно, юзаем [] чтобы избежать проблем отображения кириллицы и др.
-
-console.log(personalMovieDB);
-
-
-
-
-
-
+switch (num) {
+    case 49:
+        console.log('Неверно');
+        break;
+    case 100:
+        console.log('Неверно');
+        break;
+    case 50:
+        console.log('Верно');
+        break;
+    default: //Выбирается, если ничего не подошло
+        console.log('Не в этот раз');
+        break;
+}
 
