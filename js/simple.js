@@ -29,4 +29,6 @@ const logger = function() { //Такая функция начинает сущ�
 
 logger();
 
-const calculate = (a, b) => {return a + b;};
+const calculate = (a, b) => {
+    return a + b;
+};
