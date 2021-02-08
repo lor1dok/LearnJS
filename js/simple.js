@@ -1,34 +1,19 @@
 'use strict';
 
-let num = 20;
+const str ='test';
+const arr = [1, 2, 4];
 
-function showFirstMessage(text) {
-    console.log(text);
-    num = 10;
-    console.log(num);
-}
-//Функция начинает искать данные внутри себя, а потом идет на уровень выше и тд.
-//Замыкание функции - все переменные функции включая доступные ей внешние переменные
+console.log(arr.length); //lenght - свойство, у них нет ()
+console.log(str[2]);
 
-console.log(num);
-showFirstMessage("Hell'o!");
-console.log(num);
+let fruit = 'Some fruit';
 
-console.log(calc(2, 3)); //Функции существуют в любом моменте кода
+console.log(fruit.indexOf('fruit'));
 
-function calc(a, b) {
-    return (a + b); //ретурн заканчивает раоту функции
-    console.log('Unreacheble'); 
-}
+const logg = 'Hello world';
 
-console.log(calc(2, 3));
+console.log(logg.slice(3, 8)); //с 3 включая до момента 8, но не включая
 
-const logger = function() { //Такая функция начинает существовать, только когда до нее доходит код
-    console.log("Hell'o!");
-};
+console.log(logg.substr(3, 5)); //с 3 включая до момента 8, но не включая
 
-logger();
-
-const calculate = (a, b) => {
-    return a + b;
-};
+//В жабе сразу есть библиотека Math не буду ее рассматривать, там всё банально
