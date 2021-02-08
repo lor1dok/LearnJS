@@ -15,23 +15,26 @@ const options = {
 
 options.makeTest();
 
-console.log(options.name);
+const {border, bg} = options.colors;
+console.log(border, bg);
 
-// delete options.name;
+// console.log(options.name);
 
-console.log(options);
+// // delete options.name;
 
-let counter = 0;
-for (let key in options) {
-    if (typeof(options[key]) === 'object') {
-        for (let i in options[key]) {
-            console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-        }
-    } else {
-        console.log(`Свойство ${key} имеет значение ${options[key]}`);
-    } 
-}
+// console.log(options);
 
-console.log(Object.keys(options).length); //Выводим массив свойств первого уровня и считаем его длину
+// let counter = 0;
+// for (let key in options) {
+//     if (typeof(options[key]) === 'object') {
+//         for (let i in options[key]) {
+//             console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
+//         }
+//     } else {
+//         console.log(`Свойство ${key} имеет значение ${options[key]}`);
+//     } 
+// }
+
+// console.log(Object.keys(options).length); //Выводим массив свойств первого уровня и считаем его длину
 
 
