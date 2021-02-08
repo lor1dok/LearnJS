@@ -1,19 +1,71 @@
 'use strict';
 
-const str ='test';
-const arr = [1, 2, 4];
+let numberOfFilms;
 
-console.log(arr.length); //lenght - свойство, у них нет ()
-console.log(str[2]);
+function start() {
+    numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
 
-let fruit = 'Some fruit';
+    while (numberOfFilms == '' || numberOfFilms == null ||
+        isNaN(numberOfFilms)) {
+            numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    }
+}
 
-console.log(fruit.indexOf('fruit'));
+// start();
 
-const logg = 'Hello world';
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
-console.log(logg.slice(3, 8)); //с 3 включая до момента 8, но не включая
+function rememberMyFilms () {
+    for (let i = 0; i < 2; i++) {
+        const lSeenFilm = prompt("Какой последний фильм вы посмотрели?", ''),
+              lSeenFilmRate = +prompt("Какую оценку вы ему бы поставили?", '');
+        if (lSeenFilm != null && lSeenFilmRate != null && 
+            lSeenFilm != '' && lSeenFilmRate != '' && 
+            lSeenFilm.length < 51) {
+            personalMovieDB.movies[lSeenFilm] = lSeenFilmRate;
+        } else {
+            console.log('error');
+            i--;
+        }    
+    }
+}
 
-console.log(logg.substr(3, 5)); //с 3 включая до момента 8, но не включая
+// rememberMyFilms();
 
-//В жабе сразу есть библиотека Math не буду ее рассматривать, там всё банально
+function detectPersonaLevel() {
+    if (personalMovieDB.count > 30) {
+        console.log("Да вы киноман");
+    } else if (personalMovieDB.count > 10) {
+        console.log("Вы любитель кино");
+    } else if (personalMovieDB.count > 0) {
+        console.log("Вы новичок");
+    } else {
+        console.log("Произошла какая-то ошибка!")
+    }
+}
+
+// detectPersonaLevel();
+
+function writeYourGenres(objDB) {
+    let genreNumber = 0;
+    while (genreNumber < 2) {
+        genreNumber = objDB.genres.length;
+        objDB.genres[genreNumber] = prompt(`Ваш любымый жанр №${genreNumber + 1}?`, '')
+    }
+}
+
+writeYourGenres(personalMovieDB);
+
+function showMyDB(objHid) {
+    if (!objHid) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB(personalMovieDB.privat);
