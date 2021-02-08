@@ -1,50 +1,32 @@
 'use strict';
 
-/* Задание на урок:
+let num = 20;
 
-1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
+function showFirstMessage(text) {
+    console.log(text);
+    num = 10;
+    console.log(num);
+}
+//Функция начинает искать данные внутри себя, а потом идет на уровень выше и тд.
+//Замыкание функции - все переменные функции включая доступные ей внешние переменные
 
-2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
-отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
-возвращаем пользователя к вопросам опять
+console.log(num);
+showFirstMessage("Hell'o!");
+console.log(num);
 
-3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
-"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
-"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
+console.log(calc(2, 3)); //Функции существуют в любом моменте кода
 
-4) Потренироваться и переписать цикл еще двумя способами*/
+function calc(a, b) {
+    return (a + b); //ретурн заканчивает раоту функции
+    console.log('Unreacheble'); 
+}
 
-const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+console.log(calc(2, 3));
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
+const logger = function() { //Такая функция начинает существовать, только когда до нее доходит код
+    console.log("Hell'o!");
 };
 
-if (personalMovieDB.count > 30) {
-    console.log("Да вы киноман");
-} else if (personalMovieDB.count > 10) {
-    console.log("Вы любитель кино");
-} else if (personalMovieDB.count > 0) {
-    console.log("Вы новичок");
-} else {
-    console.log("Произошла какая-то ошибка!")
-}
+logger();
 
-for (let i = 0; i < 2; i++) {
-    const lSeenFilm = prompt("Какой последний фильм вы посмотрели?", ''),
-          lSeenFilmRate = +prompt("Какую оценку вы ему бы поставили?", '');
-    if (lSeenFilm != null && lSeenFilmRate != null && 
-        lSeenFilm != '' && lSeenFilmRate != '' && 
-        lSeenFilm.length < 51) {
-        personalMovieDB.movies[lSeenFilm] = lSeenFilmRate;
-    } else {
-        console.log('error');
-        i--;
-    }    
-}
-
-console.log(personalMovieDB);
+const calculate = (a, b) => {return a + b;};
