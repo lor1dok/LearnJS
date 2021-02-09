@@ -1,40 +1,27 @@
 'use strict';
 
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border :'black',
-        bg: 'red'
-    },
-    makeTest: function() {
-        console.log('Test');
-    }
-};
+const arr = [1, 13, 14, 32, 2, 23, 26, 6, 8];
+arr.sort(compareNum);
+console.log(arr);
 
-options.makeTest();
+function compareNum(a, b) {
+    return a - b;
+}
 
-const {border, bg} = options.colors;
-console.log(border, bg);
+// arr.pop();
+// arr.push(10);
 
-// console.log(options.name);
+// console.log(arr);
 
-// // delete options.name;
+// for(let value of arr) {
+//     console.log(value);
+// } //lenght = last_index + 1
 
-// console.log(options);
+// arr.forEach(function(item, i, arr) {
+//     console.log(`${i}: ${item} внутри массива ${arr}`);
+// });
 
-// let counter = 0;
-// for (let key in options) {
-//     if (typeof(options[key]) === 'object') {
-//         for (let i in options[key]) {
-//             console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-//         }
-//     } else {
-//         console.log(`Свойство ${key} имеет значение ${options[key]}`);
-//     } 
-// }
-
-// console.log(Object.keys(options).length); //Выводим массив свойств первого уровня и считаем его длину
-
-
+// const str = prompt('', '');
+// const products = str.split(', ');
+// products.sort();
+// console.log(products.join(';'));
