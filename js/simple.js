@@ -1,95 +1,93 @@
+/* Задание на урок:
+
+1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+
+2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+
+3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+при помощи метода forEach вывести в консоль сообщения в таком виде:
+"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+
+// Код возьмите из предыдущего домашнего задания
+
 'use strict';
 
-// let a = 5,
-//     b = a;
+// start();
 
-// b = b + 5;
+const personalMovieDB = {
+    count: 0,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
 
-// console.log(b);
-// console.log(a);
+    start: function() {
+        personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    
+        while (personalMovieDB.count == '' || personalMovieDB.count == null ||
+               isNaN(personalMovieDB.count)) {
+                   personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+        }
+    },
 
-// const obj = {
-//     a: 5,
-//     b: 1
-// };
+    rememberMyFilms: function () {
+        for (let i = 0; i < 2; i++) {
+            const lSeenFilm = prompt("Какой последний фильм вы посмотрели?", ''),
+                  lSeenFilmRate = +prompt("Какую оценку вы ему бы поставили?", '');
+            if (lSeenFilm != null && lSeenFilmRate != null && 
+                lSeenFilm != '' && lSeenFilmRate != '' && 
+                lSeenFilm.length < 51) {
+                personalMovieDB.movies[lSeenFilm] = lSeenFilmRate;
+            } else {
+                console.log('error');
+                i--;
+            }    
+        }
+    },
 
-// const copy = obj; //Передается ссылка на объект
+    detectPersonaLevel: function() {
+        if (personalMovieDB.count > 30) {
+            console.log("Да вы киноман");
+        } else if (personalMovieDB.count > 10) {
+            console.log("Вы любитель кино");
+        } else if (personalMovieDB.count > 0) {
+            console.log("Вы новичок");
+        } else {
+            console.log("Произошла какая-то ошибка!");
+        }
+    },
 
-// copy.a = 10;
+    writeYourGenres: function() {
+        let genreNumber = 0,
+            genre;
+        while (genreNumber < 3) {
+            genre = prompt(`Ваш любимый жанр №${genreNumber + 1}?`, '');
+            if (genre !== null && genre !== '') {
+                personalMovieDB.genres[genreNumber] = genre;
+            }
+            genreNumber = personalMovieDB.genres.length;
+        }
+        let num = 1;
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Любимый жанр №${i + 1} - это ${item}`);
+        });
+    },
 
-// console.log(copy);
-// console.log(obj);
+    toggleVisibleMyDB: function () {
+        if (personalMovieDB.privat) {
+            personalMovieDB.privat = false;
+        } else {
+            personalMovieDB.privat = true;
+        }
+    },
 
-// function copy(mainObj) {
-//     let objCopy = {};
-
-//     let key;
-//     for(key in mainObj) {
-//         objCopy[key] = mainObj[key];
-//     }
-
-//     return objCopy;
-// }
-
-const numbers = {
-    a: 2,
-    b: 5,
-    c: {
-        x: 7,
-        y: 4
+    showMyDB: function(hidden) {
+        if (!hidden) {
+            console.log(personalMovieDB);
+        }
     }
 };
-
-// const newNumbers = copy(numbers);
-
-// newNumbers.a = 10;
-// newNumbers.c.x = 10;
-
-// console.log(newNumbers);
-// console.log(numbers);
-
-const add = {
-    d: 17,
-    e: 20
-};
-
-const clone = Object.assign({}, add); //Поверхностное копирование в одну строчку
-
-clone.d = 20;
-
-console.log(add);
-console.log(clone);
-
-const oldArray = ['a', 'b', 'c'];
-const newArray = oldArray.slice();
-
-newArray[1] = 'adasdasd';
-console.log(newArray);
-console.log(oldArray);
-
-const video = ['utube', 'vimeo', 'rutube'],
-      blogs = ['wordpress', 'jj', 'blogger'],
-      internet = [...video, ...blogs, 'vk', 'facebook'];
-
-console.log(internet);
-
-function log(a, b, c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
-
-const num = [2, 5, 7];
-
-log(...num);
-
-const array = ['a', 'b'];
-
-const newAray = [...array];
-
-const q = {
-    one: 1,
-    two: 2
-};
-
-const newObj = {...q};
