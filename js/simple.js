@@ -68,6 +68,8 @@ const personalMovieDB = {
             genre = prompt(`Ваш любимый жанр №${genreNumber + 1}?`, '');
             if (genre !== null && genre !== '') {
                 personalMovieDB.genres[genreNumber] = genre;
+            } else {
+                console.log('Введенные данные не являются корректными.');
             }
             genreNumber = personalMovieDB.genres.length;
         }
