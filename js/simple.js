@@ -62,14 +62,24 @@ const personalMovieDB = {
     },
 
     writeYourGenres: function() {
-        let genreNumber = 0,
-            genre;
+        let genreNumber = 0;
+
         while (genreNumber < 3) {
-            genre = prompt(`Ваш любимый жанр №${genreNumber + 1}?`, '');
-            if (genre !== null && genre !== '') {
-                personalMovieDB.genres[genreNumber] = genre;
-            } else {
+            // let genre = prompt(`Ваш любимый жанр №${genreNumber + 1}?`, '');
+            // if (genre !== null && genre !== '') {
+            //     console.log('Введенные данные не являются корректными.');
+            // } else {
+            //     personalMovieDB.genres[genreNumber] = genre; //Метод с 
+                                                                //повторением
+            // }
+            // genreNumber = personalMovieDB.genres.length; 
+
+            let genre = prompt(`Введите минимум три ваших любимых жанра через запятую "жанр, жанр2, жанр3"`, '');
+            if (genre == null || genre === '') {
                 console.log('Введенные данные не являются корректными.');
+            } else {
+                personalMovieDB.genres = genre.split(', ');//Метод разделение
+                                                          //строки в подстроки
             }
             genreNumber = personalMovieDB.genres.length;
         }
