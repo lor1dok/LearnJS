@@ -1,29 +1,53 @@
 'use strict';
 
-let str = 'some';
-let str_obj = new String(str);
+//To String
 
-console.log(typeof(str));
-console.log(typeof(str_obj));
+// 1)
+console.log(typeof(String(null)));
 
-console.dir([1,2,3]);
+// 2)
+console.log(typeof(null + '')); //При сложении со строкой всегда получается строка 
 
-const soldier = {
-    health:400,
-    armor: 100,
-    sayHello: function() {
-        console.log('Hello');
-    }
-};
+const num = 5;
 
-const john = Object.create(soldier);
+console.log("vk.com/catalog/" + num);
 
-// const john = {
-//     health: 100
-// };
+const fontSize = 26 + 'px';
 
+//To number
 
+// 1)
+console.log(typeof(Number('4')));
 
-// Object.setPrototypeOf(john, soldier); // == john.__proto__ = soldier;
+// 2) Унарный плюс
+console.log(typeof(+'5'));
+let answ = +prompt("Hello", "");
 
-john.sayHello();
+// 3) 
+console.log(typeof(parseInt('15px', 10)));
+
+//To boolean
+
+//Пустота, ничего, отсутствие - всегда ложь
+//0, '', null, undefined, NaN;
+//' ', пробел уже не является пустотой и будет истиной
+
+// 1)
+let switcher = null;
+
+if (switcher) {
+    console.log('Working...');
+}
+
+switcher = ' ';
+
+if (switcher) {
+    console.log('Working...');
+}
+
+// 2)
+console.log(typeof(Boolean('4')));
+
+// 3)
+console.log(typeof(!!"444444")); // Двойное отрицание аннулирует свое же
+                                // свое же действие, но работает как  + 
