@@ -1,53 +1,66 @@
+/* Задания на урок:
+
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
 'use strict';
 
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      wrapper = document.querySelector('.wrapper'),
-      hearts = wrapper.querySelectorAll('.heart'),
-      oneHeart = document.querySelector('.heart');
-      
 
-// box.style.backgroundColor = 'green';
-// box.style.width = '500px';
+const movieDB = {
+    movies: [
+        "Скотт Пилигрим против...",
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Ярость",
+        "Новый пират"
+    ]
+};
 
-const num = 500;
-box.style.cssText = `background-color: green; width: ${num}px`;
+const adBlock = document.getElementsByClassName('promo__adv'),
+      promoBg = document.querySelector('.promo__bg'),
+      genre = promoBg.querySelector('.promo__genre'),
+      promoItems = document.getElementsByClassName('promo__interactive-item'),
 
-btns[1].style.borderRadius = '20%';
-circles[2].style.backgroundColor = 'red';
+      movieList = document.querySelector('.promo__interactive-list');
 
-// for (let i = 0; i < hearts.length; i++) {
-//     hearts[i].style.backgroundColor = 'blue';
-// }
+adBlock[0].remove();
 
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
+genre.textContent = 'ДРАМА';
+
+promoBg.style.backgroundImage = 'url(../img/bg.jpg)';
+
+// dynamicFilms(movieDB, promoItems); //Мой вариант
+
+function dynamicFilms (films, htmlContainer) {
+    films.movies.sort();
+    for (let i = 0; i < htmlContainer.length; i++) {
+        htmlContainer[i].textContent = `${i + 1} - ` + films.movies[i];
+        console.log(htmlContainer[`${i}`]);
+    }
+}
+
+movieList.innerHTML = '';
+
+movieDB.movies.sort();
+const liClass = 'promo__interactive-item';
+
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+    <li class=promo__interactive-item>
+        ${i + 1} ${film}
+        <div class="delete"></div>
+    </li>`;
 });
 
-const div = document.createElement('div');
-const text = document.createTextNode('Тут был я');
 
-div.classList.add('black');
-
-document.querySelector('.wrapper').append(div);
-
-wrapper.append(div);
-// wrapper.prepend(div);
-// wrapper.appendChild(div); //Старый вариант, работает как и append
-
-// hearts[0].before(div);
-// hearts[1].after(div);
-wrapper.insertBefore(div, hearts[1]);
-
-// circles[0].remove();
-// wrapper.removeChild(hearts[1]); //Старый вариант
-
-hearts[0].replaceWith(circles[0]);
-// wrapper.replaceChild(circles[0], hearts[0]); //Старый вариант
-
-div.innerHTML ="<h1>Hello World</h1>";
-
-// div.textContent = "<h1>Hello World</h1>"; //Теги уже пихать нельзя
-
-div.insertAdjacentHTML("afterend", `<h2>Hell' o</h2>`);
