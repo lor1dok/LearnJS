@@ -1,29 +1,14 @@
 "use strict";
 
-// touchstart
-// touchmove
-// touchend
-// touchenter
-// touchleave
-// touchcancel
+const p = document.querySelectorAll('p');
+console.log(p);
 
-window.addEventListener('DOMContentLoaded', () => {
-    const box = document.querySelector('.box');
+function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    // script.async = false;
+    document.body.append(script);
+}
 
-    box.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-
-        console.log('start');
-        console.log(e.changedTouches);
-    });
-
-    box.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-
-        console.log(e.changedTouches[0].pageX);
-    });
-});
-
-// touches
-// targetTouches
-// changedTouches
+loadScript("/test.js");
+loadScript('/test copy.js');
