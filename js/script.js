@@ -114,7 +114,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.code === 'Escape') {
+        if (e.code === 'Escape' && modalWindow.style.display === 'block') {
             document.body.style.overflow = '';
             modalWindow.style.display = '';
         }
